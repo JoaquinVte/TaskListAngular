@@ -12,12 +12,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { LogService } from './log.service';
+import { RouterModule } from '@angular/router';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksListComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,15 @@ import { LogService } from './log.service';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    RouterModule.forRoot(
+      [
+        { path: "tasks", component: TasksListComponent },
+        { path: "test", component: TestComponent },
+        { path: "", redirectTo: "tasks", pathMatch: "full" },
+        { path: "**", redirectTo: "/tasks" }
+      ]
+    )
   ],
   providers: [LogService],
   bootstrap: [AppComponent]
