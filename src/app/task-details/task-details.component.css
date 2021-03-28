@@ -1,0 +1,22 @@
+li {
+    display: block;
+    background-color: lightgreen;
+    margin: 5px 0px;  
+}
+li.pending {
+    background-color: lightcoral;
+}
+
+li a{
+    float: right;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+.realized {
+    color: rgb(0, 114, 0);
+}
+
+mat-icon {
+    padding: 10px;
+}
