@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
-  constructor() { }
+  public msg: string = "";
+  constructor(private route: ActivatedRoute,public location: Location) { }
 
   ngOnInit(): void {
+    this.msg = this.route.snapshot.paramMap.get("msg");
+  }
+  back(){
+    this.location.back();
   }
 
 }

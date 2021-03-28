@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LogService } from '../log.service';
 import { Task } from '../task';
 import { TasksService } from '../tasks.service';
@@ -10,7 +11,7 @@ import { TasksService } from '../tasks.service';
 })
 export class TasksListComponent implements OnInit {
 
-  constructor(private logger: LogService, public tasks: TasksService) { }
+  constructor(private logger: LogService, public tasks: TasksService,private router : Router) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +26,10 @@ export class TasksListComponent implements OnInit {
     let title = prompt("Enter the task title");
 
     this.tasks.addTask({ title: title, pending: true });
+  }
+
+  navigate(){
+    this.router.navigateByUrl("/test/hola");
   }
   // complete(task: Task) {
   //   this.tasks.find(p => task.id == p.id).pending = false;

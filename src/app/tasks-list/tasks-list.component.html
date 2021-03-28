@@ -1,8 +1,11 @@
 <mat-toolbar color="primary">
     <span>Task List</span>
     <span class="example-spacer"></span>
+    <button mat-icon-button (click)="navigate()">
+        <mat-icon>help_outline</mat-icon>
+    </button>
     <button mat-icon-button (click)="addTask()">
-        <mat-icon>add</mat-icon>Add task
+        <mat-icon>add</mat-icon>
     </button>
 </mat-toolbar>
 

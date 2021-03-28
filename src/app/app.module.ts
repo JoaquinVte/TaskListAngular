@@ -33,7 +33,8 @@ import { TestComponent } from './test/test.component';
     RouterModule.forRoot(
       [
         { path: "tasks", component: TasksListComponent },
-        { path: "test", component: TestComponent },
+        { path: "test/:msg", component: TestComponent },
+        { path: "tasks/:id", component: TaskDetailsComponent },
         { path: "", redirectTo: "tasks", pathMatch: "full" },
         { path: "**", redirectTo: "/tasks" }
       ]

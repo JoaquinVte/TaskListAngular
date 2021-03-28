@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { LogService } from '../log.service';
 import { Task } from '../task';
 
@@ -19,6 +20,7 @@ export class TaskDetailsComponent implements OnInit {
   realized = new EventEmitter();
 
   constructor(private logger : LogService) { }
+  
   delete() {
     this.logger.log('[taskdetails] deleted');
     this.deleted.emit(this.task);
