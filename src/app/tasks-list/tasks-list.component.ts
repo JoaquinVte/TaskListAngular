@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../log.service';
 import { Task } from '../task';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -9,31 +10,21 @@ import { Task } from '../task';
 })
 export class TasksListComponent implements OnInit {
 
-
-
-  tasks: Task[] = [
-    { id: 1, title: "Tarea1", pending: false },
-    { id: 2, title: "Tarea2", pending: true },
-    { id: 3, title: "Tarea3", pending: false },
-    { id: 4, title: "Tarea4", pending: true }
-  ];
-  constructor(private logger : LogService) { }
+  constructor(private logger: LogService, public tasks: TasksService) { }
 
   ngOnInit(): void {
   }
 
-  removeTask(task) {
+  removeTask(task: Task) {
     this.logger.log(`[TasksList] removeTask(${task.id})`);
 
-    let index = this.tasks.findIndex(t => t.id == task.id);
-
-    if (index != -1)
-      this.tasks.splice(index, 1);
+    this.tasks.removeTask(task.id);
   }
   addTask() {
     this.logger.log('[TaskList] addTask()');
     let title = prompt("Enter the task title");
-    this.tasks.push({ id: Date.now(), title: title, pending: true });
+
+    this.tasks.addTask({ title: title, pending: true });
   }
   // complete(task: Task) {
   //   this.tasks.find(p => task.id == p.id).pending = false;

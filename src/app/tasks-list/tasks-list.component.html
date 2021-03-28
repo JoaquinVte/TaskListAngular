@@ -2,11 +2,12 @@
     <span>Task List</span>
     <span class="example-spacer"></span>
     <button mat-icon-button (click)="addTask()">
-        <mat-icon>add</mat-icon>
+        <mat-icon>add</mat-icon>Add task
     </button>
 </mat-toolbar>
+
 <mat-list role="list">
-    <app-task-details *ngFor="let t of tasks" [task]="t" (deleted)="removeTask($event)" (realized)="complete($event)"></app-task-details>
+    <app-task-details *ngFor="let t of tasks.findAllTasks()" [task]="t" (deleted)="removeTask($event)" (realized)="complete($event)"></app-task-details>
 </mat-list>
 
 
